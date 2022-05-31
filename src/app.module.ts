@@ -11,6 +11,7 @@ import { AtStrategy } from 'src/utils/strategies/jwt/at.strategy';
 import { RtStrategy } from 'src/utils/strategies/jwt/rt.strategy';
 
 import { DatabaseModule } from './database/database.module';
+import { ClientsModule } from './routes/clients/clients.module';
 import { ProductsModule } from './routes/products/products.module';
 
 @Module({
@@ -20,6 +21,7 @@ import { ProductsModule } from './routes/products/products.module';
     }),
     { ...JwtModule.register({}), global: true },
     DatabaseModule,
+    ClientsModule,
     ProductsModule,
   ],
   controllers: [AppController],
