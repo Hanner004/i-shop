@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base.entity';
-import { Detail } from '../../entities';
+import { Invoice } from '../../entities';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -13,6 +13,8 @@ export class Product extends BaseEntity {
   @Column()
   stock: number;
 
-  @OneToMany(() => Detail, (detail) => detail.product, { onDelete: 'CASCADE' })
-  details: Detail[];
+  @OneToMany(() => Invoice, (invoice) => invoice.product, {
+    onDelete: 'CASCADE',
+  })
+  invoices: Invoice[];
 }

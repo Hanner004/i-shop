@@ -6,13 +6,18 @@ import {
   HttpStatus,
   Param,
   ParseUUIDPipe,
+  Patch,
   Post,
   Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ROUTESCONTROLLERS } from '../index.routes';
 import { ProductsService } from './products.service';
-import { CreateProductDTO, UpdateProductDTO } from 'src/utils/dto';
+import {
+  CreateProductDTO,
+  UpdateProductDTO,
+  UpdateStockDTO,
+} from 'src/utils/dto';
 
 @ApiTags('products')
 @Controller({ path: ROUTESCONTROLLERS.PRODUCTS })
@@ -64,6 +69,18 @@ export class ProductsController {
       statusCode: HttpStatus.OK,
       message: 'product deleted',
       data: await this.productsService.deleteProduct(productId),
+    };
+  }
+
+  @Patch('/update-stock/:productId')
+  async updateStock(
+    @Param('productId', ParseUUIDPipe) productId: string,
+    @Body() data: UpdateStockDTO,
+  ) {
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'product stock updated',
+      data: await this.productsService.updateStock(productId, data),
     };
   }
 }

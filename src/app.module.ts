@@ -13,6 +13,7 @@ import { RtStrategy } from 'src/utils/strategies/jwt/rt.strategy';
 import { DatabaseModule } from './database/database.module';
 import { ClientsModule } from './routes/clients/clients.module';
 import { ProductsModule } from './routes/products/products.module';
+import { InvoicesModule } from './routes/invoices/invoices.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ProductsModule } from './routes/products/products.module';
     DatabaseModule,
     ClientsModule,
     ProductsModule,
+    InvoicesModule,
   ],
   controllers: [AppController],
   providers: [AppService, BasicStrategy, AtStrategy, RtStrategy],

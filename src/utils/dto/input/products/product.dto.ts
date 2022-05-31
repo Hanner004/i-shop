@@ -23,3 +23,10 @@ export class UpdateProductDTO extends CreateProductDTO {
     super();
   }
 }
+
+export class UpdateStockDTO {
+  @ApiProperty()
+  @IsNumber()
+  @IsNotEmpty()
+  stock: number;
+}

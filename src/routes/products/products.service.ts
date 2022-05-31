@@ -1,10 +1,15 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
 import { ProductRepository } from 'src/database/repositories';
-import { CreateProductDTO, UpdateProductDTO } from 'src/utils/dto';
+import {
+  CreateProductDTO,
+  UpdateProductDTO,
+  UpdateStockDTO,
+} from 'src/utils/dto';
 
 @Injectable()
 export class ProductsService {
@@ -49,5 +54,18 @@ export class ProductsService {
     });
     if (!productFound) throw new NotFoundException('product not found');
     return await this.productRepository.delete({ id: productId });
+  }
+
+  async updateStock(productId: string, { stock, ...data }: UpdateStockDTO) {
+    const productFound = await this.productRepository.findOne({
+      where: { id: productId },
+    });
+    if (!productFound) throw new NotFoundException('product not found');
+    productFound.stock += stock;
+
+    if (productFound.stock < 0)
+      throw new BadRequestException('stock cannot be negative');
+
+    return await this.productRepository.save(productFound);
   }
 }

@@ -1,12 +1,19 @@
-import { Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../base.entity';
-import { Client, Detail } from '../../entities';
+import { Client, Product } from '../../entities';
 
 @Entity()
 export class Invoice extends BaseEntity {
-  @ManyToOne(() => Client, (client) => client.invoices, { onDelete: 'CASCADE' })
+  @Column()
+  quantity: number;
+
+  @ManyToOne(() => Client, (client) => client.invoices, {
+    onDelete: 'CASCADE',
+  })
   client: Client;
 
-  @OneToMany(() => Detail, (detail) => detail.invoice, { onDelete: 'CASCADE' })
-  details: Detail[];
+  @ManyToOne(() => Product, (product) => product.invoices, {
+    onDelete: 'CASCADE',
+  })
+  product: Product;
 }

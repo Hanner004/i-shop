@@ -19,6 +19,8 @@ export class Client extends BaseEntity {
   @Column()
   address: string;
 
-  @OneToMany(() => Invoice, (invoice) => invoice.client, { onDelete: 'CASCADE' })
+  @OneToMany(() => Invoice, (invoice) => invoice.client, {
+    onDelete: 'CASCADE',
+  })
   invoices: Invoice[];
 }
