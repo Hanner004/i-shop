@@ -24,7 +24,7 @@ export class InvoicesController {
   ) {
     return {
       statusCode: HttpStatus.CREATED,
-      message: 'invoice created',
+      message: 'invoice of client created',
       data: await this.invoicesService.createInvoiceOfClient(clientId, data),
     };
   }

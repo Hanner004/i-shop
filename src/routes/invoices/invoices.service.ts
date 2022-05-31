@@ -63,9 +63,11 @@ export class InvoicesService {
   }
 
   async getInvoiceOfClient(clientId: string) {
-    return await this.invoiceRepository.find({
-      where: { client: { id: clientId } },
-      relations: ['product'],
+    const clientFound = await this.clientRepository.findOne({
+      where: { id: clientId },
+      relations: ['invoices', 'invoices.product'],
     });
+    if (!clientFound) throw new NotFoundException('client not found');
+    return clientFound.invoices;
   }
 }
