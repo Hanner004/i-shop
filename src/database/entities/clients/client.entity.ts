@@ -1,5 +1,6 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base.entity';
+import { Invoice } from '../../entities';
 
 @Entity()
 export class Client extends BaseEntity {
@@ -17,4 +18,7 @@ export class Client extends BaseEntity {
 
   @Column()
   address: string;
+
+  @OneToMany(() => Invoice, (invoice) => invoice.client, { onDelete: 'CASCADE' })
+  invoices: Invoice[];
 }

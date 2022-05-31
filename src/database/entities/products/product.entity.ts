@@ -1,5 +1,6 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from '../base.entity';
+import { Detail } from '../../entities';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -11,4 +12,7 @@ export class Product extends BaseEntity {
 
   @Column()
   stock: number;
+
+  @OneToMany(() => Detail, (detail) => detail.product, { onDelete: 'CASCADE' })
+  details: Detail[];
 }
