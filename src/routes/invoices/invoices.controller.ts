@@ -17,15 +17,15 @@ import { CreateInvoiceDTO } from 'src/utils/dto/input/invoices';
 export class InvoicesController {
   constructor(private readonly invoicesService: InvoicesService) {}
 
-  @Post('/create-invoice/:clientId')
-  async createInvoice(
+  @Post('/create-invoice-of-client/:clientId')
+  async createInvoiceOfClient(
     @Param('clientId', ParseUUIDPipe) clientId: string,
     @Body() data: CreateInvoiceDTO,
   ) {
     return {
       statusCode: HttpStatus.CREATED,
       message: 'invoice created',
-      data: await this.invoicesService.createInvoice(clientId, data),
+      data: await this.invoicesService.createInvoiceOfClient(clientId, data),
     };
   }
 

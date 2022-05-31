@@ -18,7 +18,7 @@ export class InvoicesService {
     private productRepository: ProductRepository,
   ) {}
 
-  async createInvoice(
+  async createInvoiceOfClient(
     clientId: string,
     { products, ...data }: CreateInvoiceDTO,
   ) {
