@@ -26,41 +26,6 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Package
-
-```
-# database
-$ npm install --save @nestjs/typeorm@8.0.3 typeorm@0.2.41 pg
-
-# configuration .env
-$ npm i --save @nestjs/config
-
-# .env dotenv
-$ npm i dotenv
-
-# swagger
-$ npm install --save @nestjs/swagger swagger-ui-express
-
-# body-parser
-$ npm i body-parser
-
-# express basic auth
-$ npm i express-basic-auth
-
-# validations pipe
-$ npm i --save class-validator class-transformer
-
-# auth
-$ npm install --save @nestjs/passport passport passport-local
-$ npm install --save-dev @types/passport-local
-
-$ npm install --save @nestjs/jwt passport-jwt
-$ npm install --save-dev @types/passport-jwt
-
-$ npm i passport passport-http @nestjs/passport --save
-$ npm i @types/passport @types/passport-http --save-dev
-```
-
 ## Installation
 
 ```bash
