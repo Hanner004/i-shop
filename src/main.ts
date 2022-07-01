@@ -26,7 +26,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('i-shop')
     .setDescription('API documentation')
-    .setVersion('1.0')
+    .setVersion('0.0.1')
     .addBasicAuth()
     .addBearerAuth()
     .build();
